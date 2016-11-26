@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="scripts/janrain-init.js"></script>
+    <script type="text/javascript">
+        // --- page-specific settings ------------------------------------------
+        janrain.settings.capture.flowName = 'lilly_pro_uk';
+        janrain.settings.capture.screenToRender = 'traditionalRegistration';
+
+        // --- define event handlers and start the janrain ui ------------------
+        function janrainCaptureWidgetOnLoad() {
+            janrain.events.onCaptureLoginSuccess.addHandler(function(result) {
+                window.location = 'edit-profile.html';
+            });
+
+            janrain.events.onCaptureSessionFound.addHandler(function(result) {
+                window.location = 'edit-profile.html';
+            });
+
+            janrain.events.onCaptureScreenShow.addHandler(function(result) {
+                // Swap out the default text for the terms and conditions label
+                // such that the links can be defined in the JTL/markup.
+                if (result.screen == 'traditionalRegistration') {
+                    var optInText = document.getElementById('registration_termsAndConditionsLabel');
+                    var wrapper = document.getElementById('capture_traditionalRegistration_form_item_inner_termsAndCondition_termsAndConditions');
+                    var label = wrapper.firstChild;
+
+                    if (optInText && wrapper && label) {
+                        for (var i=0; i < label.childNodes.length; i++) {
+                            var child = label.childNodes[i]
+                            if (child.nodeType === 3) {
+                                label.removeChild(child);
+                            }
+                        }
+                        wrapper.appendChild(optInText);
+                    }
+                }
+            });
+
+            // register custom client-side valididators
+            janrain.capture.ui.registerFunction('passwordValidation', janrainCustomPasswordValidation);
+            janrain.capture.ui.registerFunction('postalCodeValidation', janrainCustomPostalCodeValidation);
+
+            // should be the last line in janrainCaptureWidgetOnLoad()
+            janrain.capture.ui.start();
+        }
+    </script>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+    <a href="sign-in.html">Sign In</a>
+
+    <!-- Capture widget screens -->
+    <div style="display:none;" id="registrationNewVerification">
+        <div class="capture_header">
+            <h1>{* page_register_verification_header *}</h1>
+        </div>
+        <p>{* page_register_verification_message *}</p>
+        <div class="capture_footer">
+            <a href="#" onclick="window.location.reload()" class="capture_btn capture_primary">Close</a>
+        </div>
+    </div>
+    <div style="display:none;" id="traditionalRegistration">
+        <div class="capture_header">
+            <h1>{* page_register_traditional_header *}</h1>
+        </div>
+        <p>{* page_register_traditional_message *} <a href="sign-in.html">{* page_register_signin *}</a></p>
+        {* #registrationForm *}
+            {* personalData_title *}
+            {* personalData_firstName *}
+            {* personalData_lastName *}
+            {* registration_emailAddress *}
+            {* registration_emailAddressConfirm *}
+            {* registration_password *}
+            {* registration_passwordConfirm *}
+            {* professionalContactData_phone *}
+            {* professionalData_position *}
+            {* professionalData_specialty *}
+            {* professionalData_postalCode *}
+            {* termsAndCondition_termsAndConditions *}
+            <span id="registration_termsAndConditionsLabel">
+                {* page_register_terms_label_1 *} <a href="#">{* page_register_terms_link *}</a> {* page_register_terms_label_2 *} <a href="#">{* page_register_privacy_link *}</a>.
+            </span>
+            <div>
+                {* page_register_contactConsent_message *}
+            </div>
+            {* termsAndCondition_contactConsent *}
+            <div class="capture_footer">
+                <div class="capture_left">
+                    {* backButton *}
+                </div>
+                <div class="capture_right">
+                    {* createAccountButton *}
+                </div>
+            </div>
+        {* /registrationForm *}
+    </div>
+    <div style="display:none;" id="userStatusPostLogin">
+        {* page_access_not_active *}
+    </div>
+    <div style="display:none;" id="countryPostLogin">
+        {* page_access_wrong_country *}
+    </div>
+    <div style="display:none;" id="professionalGroupPostLogin">
+        {* page_access_wrong_group *}
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<script>
+function goToEndpoint() {
+  var x = document.URL;
+  var res = x.split("=",2);
+  var url = 'http://' + res[1];
+
+  console.log(url);
+  location.replace(url);
+  //$(location).attr('href', res[1]);
+}
+
+function showRegistrationScreen() {
+
+}
+</script>
+
+<!--<div style="padding-top: 60px">
+  <button onclick='goToEndpoint()'>Test Endpoint</button>
+</div>-->
+
+<div id="footer" style='bottom: 0;'>
+        <ol class="breadcrumb">
+            <!-- ngRepeat: field in vm.footerDefinition --><li ng-repeat="field in vm.footerDefinition" class="ng-scope">
+                <!-- ngIf: field.href=='' --><a href="" ng-if="field.href==''" ng-click="vm.loadFooterText(field)" translate="" class="ng-scope ng-binding"> terms of use</a><!-- end ngIf: field.href=='' --><!--="{{field.href}}/#/" -->
+                <!-- ngIf: field.href!='' --><!--="{{field.href}}/#/" -->
+                </li><!-- end ngRepeat: field in vm.footerDefinition --><li ng-repeat="field in vm.footerDefinition" class="ng-scope">
+                <!-- ngIf: field.href=='' --><a href="" ng-if="field.href==''" ng-click="vm.loadFooterText(field)" translate="" class="ng-scope ng-binding">privacy</a><!-- end ngIf: field.href=='' --><!--="{{field.href}}/#/" -->
+                <!-- ngIf: field.href!='' --><!--="{{field.href}}/#/" -->
+                </li><!-- end ngRepeat: field in vm.footerDefinition -->
+
+            <li><!-- ngIf: vm.isAdminLinkVisible --><a href="javascript:$('a.janrain-provider-icon-lilly')[0].click();" ng-if="vm.isAdminLinkVisible" translate="" class="ng-scope">admin</a><!-- end ngIf: vm.isAdminLinkVisible --></li>
+            <li><!-- ngIf: vm.isAdminLinkVisible --><a onClick='goToEndpoint()' class="ng-scope">test</a><!-- end ngIf: vm.isAdminLinkVisible --></li>
+            <li><a href="#" id="capture_signIn_createAccountButton" data-capturescreen="traditionalRegistration" class="capture_secondary capture_createAccountButton capture_btn capture_primary">Create Account</a></li>
+            <li><a href="#" id="capture_signIn_createAccountButton" data-capturescreen="editProfile" class="capture_secondary capture_createAccountButton capture_btn capture_primary">Edit Profile</a></li>
+            <li translate="" class="ng-scope">Copyright © 2016 Eli Lilly and Company. All rights reserved.</li>
+        </ol>
+    </div>
