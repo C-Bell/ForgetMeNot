@@ -18,11 +18,8 @@ app.use(bodyParser.urlencoded({
 	extended: false,
 }));
 
-// Configure the session middleware
-require('./lib/web/sessions')(app);
-
 // Configure authentication middle ware
-const auth = require('./lib/web/auth')(app);
+const auth = require('./lib/web/SSO')(app);
 
 auth.init();
 auth.registerRoutes();
@@ -35,6 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'lib/public')));
+app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')));
 
 // Load authenticated routes
 app.use('/', authenticatedRoutes);

@@ -1,5 +1,4 @@
 // Routes in this module require authentication
-
 import express from 'express';
 
 const router = express.Router();
@@ -15,12 +14,8 @@ router.use((req, res, next) => {
 	return res.redirect(`/auth/forcedotcom?redirect=${req.originalUrl}`);
 });
 
-router.get('/register', (req, res) => {
-	return res.render('register');
-});
-
-router.get('/sign-in', (req, res) => {
-	return res.render('sign-in');
+router.get('/about', (req, res) => {
+	return res.render('about');
 });
 
 router.get('/', (req, res) => {

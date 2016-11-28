@@ -1,0 +1,45 @@
+{
+  "name": "Cirrus Web Accelerator",
+  "description": "Cirrus Web Accelerator",
+  "keywords": [
+    "Node.JS",
+    "JavaScript",
+    "ES6",
+    "Sass",
+    "Browersify"
+  ],
+  "website": "https://es6-web-accelerator.herokuapp.com/",
+  "repository": "https://github.com/EliLillyCo/CIRR_WEB_ACCELERATOR_NEW",
+  "success_url": "/",
+  "scripts": {
+    "test-setup": "",
+    "test": "npm test"
+  },
+  "env": {
+    "NEW_RELIC_LICENSE_KEY": {
+      "description": "Licence Key for the New Relic Add-On. ()",
+      "required": "true"
+    },
+    "NEW_RELIC_LOG": {
+      "description": "The type of New Relic to monitor. ()",
+      "required": "true"
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "description": "API Token for Papertrail.()",
+      "required": "true"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": "2",
+      "size": "Performance-M"
+    }
+  },
+  "image": "heroku/nodejs",
+  "addons": ["newrelic", "papertrail"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ]
+}
