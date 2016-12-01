@@ -1,0 +1,88 @@
+<style>
+html { height:100%; }
+body { position:absolute; top:0; bottom:0; right:0; left:0; }
+</style>
+
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/momentjs/2.17.0/locale/af.js'></script> -->
+<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+<script src="/js/calendar.js"></script>
+
+
+<div class="row" style="height:100%;">
+<div class="col s12 m6" style="height:100%; color:white; background-color:#00C0E4; padding-top:5%;">
+<!-- Calendar Div -->
+<div class="row" style="text-align:center;">
+Calendar
+</div>
+<div class="row" style="text-align:center;">
+<img class="col s10 offset-s1" src="/img/Calendar.png"/>
+</div>
+<div class="row" style="text-align:center; font-size:46px;">
+Thursday Afternoon
+</div>
+<div id="currentTime" class="row" style="text-align:center; padding-top:10px; font-size:26px;">
+
+</div>
+<!-- End Calendar Div -->
+</div>
+<div class="col s12 m6" style="height:100%; padding:0px;">
+  <div class="row" style="height:100%; width:100%;">
+    <div class="col s12" style="background-color:#CB70D7; color:white; height:50%; width:100%;">
+      <!-- Weather Div -->
+      <div class="row" style="text-align:center; padding-top:5%; font-size:36px;">
+        Weather
+      </div>
+      <div class="row" style="text-align:center;">
+          <img class="col s6 offset-s3" src="/img/Cloud.png" style="height:50%; width:50%;"/>
+      </div>
+      <div class="row" style="text-align:center; font-size:26px;">
+        Value
+      </div>
+
+      <!-- End Weather Div -->
+    </div>
+    <div class="col s6" style="background-color:#E6567A; color:white; height:50%; width:50%; padding-top:5%;">
+      <!-- Last Reminder Div -->
+      <div class="row" style="text-align:center; font-size:36px;">
+        Last Reminder
+      </div>
+      <div class="row" style="text-align:center;">
+        <img class="col s10 offset-s1" src="/img/Bath_Outline.png"/>
+      </div>
+      <div class="row" style="text-align:center; font-size:26px;">
+        Value
+      </div>
+      <!-- End Last Reminder Div -->
+    </div>
+    <div class="col s6" style="background-color:#E8C14C; color:white; height:50%; width:50%; padding-top:5%;">
+      <!-- Next Reminder Div -->
+      <div class="row" style="text-align:center; font-size:36px; height:40px;">
+        Next Reminder
+      </div>
+      <div class="row" style="text-align:center;">
+        <img class="col s10 offset-s1" src="/img/Fridge.png"/>
+      </div>
+      <div class="row" style="text-align:center; font-size:26px;">
+        Value
+      </div>
+      <!-- End Next Reminder Div -->
+    </div>
+</div>
+</div>
+
+</div>
+<div class="row">
+<div id="authorize-div" style="display: none">
+      <span>Authorize access to Google Calendar API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <pre id="output"></pre>
+  </div>
+<script>
+$( document ).ready(function() {
+console.log("yo");
+});
+</script>
