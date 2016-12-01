@@ -12,7 +12,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
 <div class="col s12 m6" style="height:100%; color:white; background-color:#00C0E4; padding-top:5%;">
 <!-- Calendar Div -->
 <div class="row" style="text-align:center;">
-Calendar
+
 </div>
 <div class="row" style="text-align:center;">
 <img class="col s10 offset-s1" src="/img/Calendar.png"/>
@@ -33,10 +33,10 @@ Thursday Afternoon
         Weather
       </div>
       <div class="row" style="text-align:center;">
-          <img class="col s6 offset-s3" src="/img/Cloud.png" style="height:50%; width:50%;"/>
+          <img class="col s4 offset-s4" src="/img/Cloud.png" style="height:40%; width:40%; padding-top:5%;"/>
       </div>
-      <div class="row" style="text-align:center; font-size:26px;">
-        Value
+      <div class="row" style="text-align:center; font-size:50px;">
+        19°
       </div>
 
       <!-- End Weather Div -->
@@ -49,21 +49,23 @@ Thursday Afternoon
       <div class="row" style="text-align:center;">
         <img class="col s10 offset-s1" src="/img/Bath_Outline.png"/>
       </div>
-      <div class="row" style="text-align:center; font-size:26px;">
-        Value
+      <div class="row" style="text-align:center; font-size:26px; padding-top:10px; height:60px;">
+        2'o'clock in the afternoon
       </div>
       <!-- End Last Reminder Div -->
     </div>
     <div class="col s6" style="background-color:#E8C14C; color:white; height:50%; width:50%; padding-top:5%;">
       <!-- Next Reminder Div -->
       <div class="row" style="text-align:center; font-size:36px; height:40px;">
+        <div class="col s12">
         Next Reminder
+        </div>
       </div>
       <div class="row" style="text-align:center;">
         <img class="col s10 offset-s1" src="/img/Fridge.png"/>
       </div>
-      <div class="row" style="text-align:center; font-size:26px;">
-        Value
+      <div class="row" style="text-align:center; font-size:26px; padding-top:10px;">
+        4'o'clock in the afternoon
       </div>
       <!-- End Next Reminder Div -->
     </div>
@@ -71,18 +73,3 @@ Thursday Afternoon
 </div>
 
 </div>
-<div class="row">
-<div id="authorize-div" style="display: none">
-      <span>Authorize access to Google Calendar API</span>
-      <!--Button for the user to click to initiate auth sequence -->
-      <button id="authorize-button" onclick="handleAuthClick(event)">
-        Authorize
-      </button>
-    </div>
-    <pre id="output"></pre>
-  </div>
-<script>
-$( document ).ready(function() {
-console.log("yo");
-});
-</script>
