@@ -19,12 +19,15 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
 <img class="col s10 offset-s1" src="/img/Calendar.png"/>
 </div>
 <div class="row" style="text-align:center; font-size:46px;">
-8th December
+<div id="txt"></div>
+</div>
+<div class="row" style="text-align:center; font-size:46px;">
+<span id="day_num">8th</span><span>/</span><span id="month">December</span>
 
 </div>
 <div class="row" style="text-align:center; font-size:46px;">
+<div id="day_string">Thursday Afternoon</div>
 
-Thursday Afternoon
 </div>
 <div id="currentTime" class="row" style="text-align:center; padding-top:10px; font-size:26px;">
 
@@ -77,7 +80,6 @@ Thursday Afternoon
   </div>
   </div>
 </div>
-<h1> Test </h1>
 <div id="authorize-div" style="display: none">
   <span>Authorize access to Google Calendar API</span>
   <!--Button for the user to click to initiate auth sequence -->
@@ -85,8 +87,43 @@ Thursday Afternoon
     Authorize
   </button>
 </div>
-<pre id="output"></pre>
 
 <script>
+$( document ).ready(function() {
+  var d = new Date(); // for now
 
+  var weekday = new Array(7);
+  weekday[0]=  "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  $('#day_num').text(d.getDate());
+  $('#month').text(d.getMonth());
+
+  $('#day_string').text(weekday[d.getDay()]);
+
+  console.log(d.getHours());
+  startTime();
+});
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m;
+    var t = setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
 </script>
