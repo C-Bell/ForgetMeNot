@@ -57,7 +57,7 @@
         <p style="font-size:36px;">Last Reminder</p>
       </div>
       <div class="col s12" style="text-align:center;">
-        <img class="col s10 offset-s1" src="/img/Bath_Outline.png" style="padding-top:10px;"/>
+        <img id="last_img" class="col s10 offset-s1" src="/img/Bath_Outline.png" style="padding-top:10px;"/>
       </div>
       <div class="col s12" style="text-align:center; font-size:26px; padding-top:5vh; height:60px;">
         <span id="last_time">12:00</span>
@@ -72,7 +72,7 @@
       </div>
       <div class="col s12" style="text-align:center;">
         <div onclick="openNav()">
-        <img class="col s10 offset-s1" src="/img/Fridge.png" style="padding-top:10px;"/>
+        <img id="next_img" class="col s10 offset-s1" src="/img/Fridge.png" style="padding-top:10px;"/>
       </div>
     </div>
       <div class="col s12" style="text-align:center; font-size:26px; padding-top:5vh; height:60px;">
@@ -104,7 +104,7 @@
       <h1 id="overlay_title" style="color: white; font-size:46px;"> Fridge </h1>
     </div>
     <div class="col s12">
-      <img id="overlay_img" class="col s4 offset-s4" src="/img/Fridge2.png"/>
+      <img id="overlay_img" style="height:250px;" class="col s4 offset-s4" src="/img/Fridge2.png"/>
     </div>
     <div class="col s12">
       <h4 id="overlay_desc" style="color: white;">Grab yourself a sandwich for lunch!</h4>
@@ -160,9 +160,10 @@ if (curHr < 12) {
   $('#day_string').text(weekday[d.getDay()] + ' Evening');
 }
 
-  console.log(d.getHours());
   startTime();
 });
+
+var count = 0;
 
 function startTime() {
     var today = new Date();
@@ -171,6 +172,13 @@ function startTime() {
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
+    ++count;
+    if(count == 10)
+    {
+      console.log('Fetching new Events');
+      count = 0;
+      listUpcomingEvents();
+    }
     document.getElementById('txt').innerHTML =
     h + ":" + m;
     var t = setTimeout(startTime, 500);
