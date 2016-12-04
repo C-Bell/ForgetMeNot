@@ -37,7 +37,8 @@
 </div>
 <div class="col s12 m6" style="height:100%; padding:0px;">
   <div class="row" style="height:100%; width:100%;">
-    <div class="col s12" style="background-color:#CB70D7; color:white; height:50%; width:100%;">
+    <!-- <div id = "medium_panel"> -->
+    <div id = "medium_panel_weather" class="col s12" style="background-color:#CB70D7; color:white; height:50%; width:100%;">
       <!-- Weather Div -->
       <div class="col s12" style="text-align:center; padding-top:5%; font-size:36px;">
         <p style="font-size:36px;">Weather</p>
@@ -48,9 +49,12 @@
       <div class="col s12" style="text-align:center; font-size:50px; padding-top:5vh;">
         <p style="font-size:36px; padding-top:20px;">19°</p>
       </div>
-
-      <!-- End Weather Div -->
     </div>
+    <div id = "medium_panel_album" class="col s12" style="background-color: green; color:white; height:50%; width:100%; visibility:hidden;">
+      <img style="height:50%; width:100%;" src="/img/OFH.jpg">
+    </div>
+      <!-- End Photos Div -->
+    <!-- </div> -->
     <div class="col s6" style="background-color:#E6567A; color:white; height:50%; width:50%; padding-top:5%;">
       <!-- Last Reminder Div -->
       <div class="col s12" style="text-align:center; font-size:36px;">
@@ -134,8 +138,36 @@ function closeNav() {
     $('#myNav').animateCss('fadeOut');
 }
 
+$('#medium_panel_weather').click(function (){
+  $('#medium_panel_weather').animateCss('fadeOutRight');
+  $('#medium_panel_weather').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    document.getElementById("medium_panel_weather").style.visibility = "hidden";
+    $('#medium_panel_weather').hide();
+    $('#medium_panel_album').show();
+    document.getElementById("medium_panel_album").style.visibility = "visible";
+    $('#medium_panel_album').animateCss('fadeInRight');
+    $('#medium_panel_album').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    });
+  });
+
+});
+
+$('#medium_panel_album').click(function (){
+  $('#medium_panel_album').animateCss('fadeOutRight');
+  $('#medium_panel_album').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    document.getElementById("medium_panel_weather").style.visibility = "hidden";
+    $('#medium_panel_album').hide();
+    $('#medium_panel_weather').show();
+    document.getElementById("medium_panel_weather").style.visibility = "visible";
+    $('#medium_panel_weather').animateCss('fadeInRight');
+    $('#medium_panel_weather').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    });
+  });
+
+});
 
 $( document ).ready(function() {
+  $('#medium_panel_album').hide();
   var d = new Date(); // for now
   var curHr = d.getHours();
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
